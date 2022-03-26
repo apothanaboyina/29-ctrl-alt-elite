@@ -33,7 +33,16 @@ As a group, we would like to address these obstacles and create a web applicatio
 # User Interface
 
 # Employer Interface
+For the employer interface, there will be 2 pages
+
+1: Employer Dashboard
+    the employer dashboard provides employers an view and edit all of their postings, as well as the ability to view applicant information.
+    ![Post Session Page](images/Screenshot(157).PNG)
+
+2: Applicants
+    when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
+    ![Post Session Page](images/Screenshot(158).PNG)
 
 # Breakdown of Labor
 
-Aditya Pothanaboyina: Creates wireframes and html/css files for employerinterface and applicant pages
+Aditya Pothanaboyina: Created wireframes and html/css files for employerinterface and applicant pages
