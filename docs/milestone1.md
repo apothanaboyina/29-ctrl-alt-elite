@@ -34,5 +34,6 @@ As a group, we would like to address these obstacles and create a web applicatio
 
 # Employer Interface
 
+# Breakdown of Labor
 
-
+Aditya Pothanaboyina: Creates wireframes and html/css files for employerinterface and applicant pages
