@@ -48,22 +48,22 @@ For the employer interface, there will be 2 pages
 1: Employer Dashboard
     the employer dashboard provides employers an view and edit all of their postings, as well as the ability to view applicant information.
 
-![Dashboard Wireframe](images/wireframedash.png)
+![Dashboard Wireframe](https://raw.githubusercontent.com/apothanaboyina/cs326-final-29-ctrl-alt-elite/main/images/wireframedash.png)
 
-![Dashboard](images/htmldash.png)
+![Dashboard](https://raw.githubusercontent.com/apothanaboyina/cs326-final-29-ctrl-alt-elite/main/images/htmldash.png)
 
 
 
 2: Applicants
     when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
 
-![Applicants Wireframe](images/wireframeapplicants.png)
+![Applicants Wireframe](https://raw.githubusercontent.com/apothanaboyina/cs326-final-29-ctrl-alt-elite/main/images/wireframeapplicants.png)
 
-![Applicants](images/htmlapplicants.png)
+![Applicants](https://raw.githubusercontent.com/apothanaboyina/cs326-final-29-ctrl-alt-elite/main/images/htmlapplicants.png)
 
 # Breakdown of Labor
 
-Aditya Pothanaboyina: Created wireframes and html/css files for employerinterface and applicant pages
+Aditya Pothanaboyina: Created wireframes and html/css files for employer interface and applicant pages
 
 Amanda Katt: Created wireframes and html/css files for search page and login page
 
