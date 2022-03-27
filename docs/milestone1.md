@@ -46,3 +46,4 @@ For the employer interface, there will be 2 pages
 # Breakdown of Labor
 
 Aditya Pothanaboyina: Created wireframes and html/css files for employerinterface and applicant pages
+Amanda Katt: Created wireframes and html/css files for search page and login page
