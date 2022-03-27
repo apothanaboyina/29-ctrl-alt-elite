@@ -37,13 +37,14 @@ For the employer interface, there will be 2 pages
 
 1: Employer Dashboard
     the employer dashboard provides employers an view and edit all of their postings, as well as the ability to view applicant information.
-![Post Session Page](//29-ctrl-alt-elite/images/Screenshot%20(157).png
+![Post Session Page](//29-ctrl-alt-elite/images/Screenshot%20(157).png)
 
 2: Applicants
     when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
-![Post Session Page](//29-ctrl-alt-elite/images/Screenshot%20(158).png
+![Post Session Page](//29-ctrl-alt-elite/images/Screenshot%20(158).png)
 
 # Breakdown of Labor
 
 Aditya Pothanaboyina: Created wireframes and html/css files for employerinterface and applicant pages
+
 Amanda Katt: Created wireframes and html/css files for search page and login page
