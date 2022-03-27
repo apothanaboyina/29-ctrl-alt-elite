@@ -30,7 +30,17 @@ As a group, we would like to address these obstacles and create a web applicatio
 
 # Login
 
+When users first try to look at job postings, they will be asked to sign in by putting in their email and password. Alternatively, they can also sign up on
+this page if they do not already have an account.
+
+![Login Page](https://user-images.githubusercontent.com/98606830/160297031-039d42f2-749a-4cd6-a63e-7aedc5ca2cf3.png)
+
 # User Interface
+When applicants want to search for a job by using keywords or by other factors such as location or date posted, they can go to the search page
+
+![Search Page](https://user-images.githubusercontent.com/98606830/160297171-fdedf7a5-bbb8-4a66-8345-8f3ff9066b2a.png)
+
+
 
 # Employer Interface
 For the employer interface, there will be 2 pages
@@ -38,9 +48,19 @@ For the employer interface, there will be 2 pages
 1: Employer Dashboard
     the employer dashboard provides employers an view and edit all of their postings, as well as the ability to view applicant information.
 
+<<<<<<< HEAD
 
 2: Applicants
     when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
+=======
+![Screenshot (159)](https://user-images.githubusercontent.com/98606830/160297763-d8a37458-52bd-461a-8898-7faba2821fe3.png)
+
+2: Applicants
+    when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
+    
+![Screenshot (160)](https://user-images.githubusercontent.com/98606830/160297769-63aa85d2-d43c-421d-b4b0-b7b4331368ca.png)
+
+>>>>>>> b4d02331570e4dcbeb7492ba9c73e5956bfefc85
 
 # Breakdown of Labor
 
