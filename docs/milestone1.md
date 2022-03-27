@@ -4,7 +4,7 @@
 
 # Team Overview
 
-* Aditya Pothanaboyina
+* Aditya Pothanaboyina: apothanaboyina
 * Adonay Bereket: abereket7
 * Amanda Katt: akatt1221
 
@@ -41,8 +41,8 @@ For the employer interface, there will be 2 pages
 
 2: Applicants
     when "view applicants" is clicked, this is the screen that employers will see, a table of all applicants for a posting with the ability to directly contact them.
-![Post Session Page](//29-ctrl-alt-elite/images/Screenshot%20(158).png
+![Post Session Page](//29-ctrl-alt-elite/images/Screenshot20(158).png
 
 # Breakdown of Labor
 
-Aditya Pothanaboyina: Created wireframes and html/css files for employerinterface and applicant pages
+Aditya Pothanaboyina: Created wireframes and html/css files for employer interface and applicant pages
