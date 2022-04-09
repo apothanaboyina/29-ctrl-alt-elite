@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+#title {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:black;
+}
+
+#info {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+
+.container-fluid {
+    width: 100%;
+    height: 30px;
+    background-color: maroon;
+}
+
+#form-row {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x:auto;
+}
+
+.form-control {
+    display: inline-block;
+    width: 18%;
+}
+
+input[type=text] {
+    display: inline-block;
+    width: 40%;
+    padding: 14px 14px;
+    margin: 8px 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+  
+button {
+    display: inline-block;
+    background-color: maroon !important;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 8px;
+    cursor: pointer;
+    width: 20%;
+}
+
+#back {
+    width: 90% !important;
+}
+  
+#infoColumn {
+    width: 20%;
+}
+
+#mainInfo {
+    background-color: white;
+    padding: 16px 16px;
+}
+
+#description {
+    width: 65%;
+    background-color: white;
+}
+
+.column {
+    padding: 16px 16px;
+    margin: 16px 16px;
+    display: inline-block;
+    vertical-align: top;
+}
