@@ -2,28 +2,16 @@ body {
     background-color: lightgray;
 }
 
-#navbar {
-    background-color: maroon;
-}
-
-#jobboard {
-    color: black
-}
-
-#home {
-    color: black;
-}
-#logout {
-    color: black;
-}
-#title {
-    text-align: center;
-}
-
 .container-fluid {
     width: 100%;
-    height: 50px;
+    height: 30px;
     background-color: maroon;
+}
+
+#title {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:black;
 }
 
 button {
@@ -37,5 +25,12 @@ button {
 }
 
 #table {
-    background-color: whitesmoke
+    background-color: whitesmoke;
+    margin: auto;
+    padding: 16px 16px;
+    width: 100%;
+}
+
+#goback {
+    width: 20% !important;
 }

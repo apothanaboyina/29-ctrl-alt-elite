@@ -11,38 +11,21 @@
   </head>
   <body>
     <form>
-      <nav class="navbar navbar-expand-lg" id="navbar">
-        <a class="navbar-brand" href="#" id="jobboard">UMass Job Board</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#" id="home">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="logout">Log Out</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-        <hr>
-        <div class="row">
-          <div class="col s9">
-            <!-- Teal page content  -->
-            <h4 id="dash">Your Dashboard</h4>
-
-            <div class="container">
-              <h4>Social Media Assistant</h4>
-              <p>Smart About Money - Communications Team Member Smart About Money (SAM) is hiring for their communications team! Part of the Office of Student Success, SAM is UMass Amherst's peer-to-peer financial wellness program. We are currently hiring 1-2 motivated...</p>
-              <h6>Hourly Pay Rate: $14</h6>
-              <h6>Hours Per Week: 10-20</h6>
-              <h6>Location: On-Campus</h6>
-              <button class="btn btn-primary" type="submit">View Applications</button>
-              <button class="btn btn-primary" type="submit">Edit Job Posting</button>
+      <div class="container-fluid">
+        <h4 id="title">UMass Job Board</h4>
+      </div><br>
+      <div class="row">
+        <div class="col s9">
+          <h3 id="dash">Your Dashboard</h3>
+          <div class="container">
+            <h4>Social Media Assistant</h4>
+            <p>Smart About Money - Communications Team Member Smart About Money (SAM) is hiring for their communications team! Part of the Office of Student Success, SAM is UMass Amherst's peer-to-peer financial wellness program. We are currently hiring 1-2 motivated...</p>
+            <h6>Hourly Pay Rate: $14</h6>
+            <h6>Hours Per Week: 10-20</h6>
+            <h6>Location: On-Campus</h6>
+            <button class="btn btn-primary" type="submit">View Applications</button>
+            <button class="btn btn-primary" type="submit">Edit Job Posting</button>
           </div>
-          <br>
           <div class="container">
               <h4>Social Media Assistant</h4>
               <p>Smart About Money - Communications Team Member Smart About Money (SAM) is hiring for their communications team! Part of the Office of Student Success, SAM is UMass Amherst's peer-to-peer financial wellness program. We are currently hiring 1-2 motivated...</p>
@@ -53,56 +36,37 @@
               <button class="btn btn-primary" type="submit">Edit Job Posting</button>
           </div>
         </div>
-        <div class="col s3">
+        <div class="col s3" id="secondcol">
           <h3 id = "newpost">Create New Posting</h3>
           <div id="form1">
-            <div>
-              <label for="fname">Job Title: </label>
-              <input type="text" id="fname" name="firstname" placeholder="Title">
+            <label for="fname">Job Title:</label><br>
+            <input type="text" id="fname" name="firstname" placeholder="Title">
+
+            <label id ="jd">Job Description:</label><br>
+            <textarea id="desc" name="lastname" placeholder="250-500 words"></textarea>
+
+            <label>Hourly Pay Rate: $</label>
+            <div class="form-outline">
+              <input type="text" id="typeNumber" class="form-control" />
+              <label class="form-label" for="typeNumber"></label>
             </div>
-            
+
+            <label>Hours per Week: </label><br>
+            <input type="number" id="minhoursperweek" min="1" max="60"> to <input type="number" id="maxhoursperweek" min="1" max="60"><br>
+
             <div>
-              <label id = "jd">Job Description: </label>
-              <input type="text" id="desc" name="lastname" placeholder="250-500 words">
-            </div>
-            <br>
-            <div>
-              <label for="lname">Location: </label>
+              <label for="lname">Location: </label><br>
               <select class="form-control" name="location">
                 <option value="" disabled selected>Location</option>
                 <option>On-Campus</option>
                 <option>Off-Campus</option>
                 <option>Both</option>
               </select>
-            </div>
-            <br>
-            <div>
-              <label>Hours per Week: </label>
-              <select class="form-control" name="date"> 
-                <option value="" disabled selected>select one</option>
-                <option>Past day</option>
-                <option>Past week</option>
-                <option>Past 2 weeks</option>
-                <option>Past month</option>
-                <option>More than month</option>
-              </select>
-            </div>
-            <br>
-            <div>
-              <label>Hourly Pay Rate: </label>
-              <select class="form-control" name="date"> 
-                <option value="" disabled selected>select one</option>
-                <option>Past day</option>
-                <option>Past week</option>
-                <option>Past 2 weeks</option>
-                <option>Past month</option>
-                <option>More than month</option>
-              </select>
-            </div>
-            <br>
-            <button class="btn btn-primary" type="submit">Search</button>
+            </div><br>
+            <button class="btn btn-primary" type="submit">Post</button>
             </form>
           </div>
+        </body>
       </div>
         <br>
       </form>
