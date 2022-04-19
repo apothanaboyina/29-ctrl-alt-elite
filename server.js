@@ -1,23 +1,19 @@
 import express from 'express';
-import { writeFile } from 'fs';
 import logger from 'morgan';
+import * as utilities from 'utilities.js';
+import { users, employers, jobs } from 'utilities.js';
+import { usersFile, employersFile, jobsFile } from 'utilities.js';
+ 
 const { check, validationResult } = require('express-validator');
 const bodyParser = require('body-parser'); 
 const app = express();
 const port = 3000;
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/static', express.static('static'));
-
-const users = {};
-const employers = {};
-const jobs = {}
-
-const usersFile = 'users.json';
-const employersFile = 'employers.json';
-const jobsFile = 'jobs.json';
 
 this.server.use('/', express.static('static'));
 
@@ -88,52 +84,18 @@ app.post('/login', loginValidation, (req, res) => {
 
 //creates new user
 app.post('/user/create/:email/:name', async (req, res) => {
-    createUser(res, req.params);
+    utilities.createUser(res, req.params);
 });
 
 //creates new employer
 app.post('/employer/create/:email/:name', async (req, res) => {
-    createEmployer(res, req.params);
+    utilities.createEmployer(res, req.params);
 });
 
 //creates new job
 app.post('/employer/job/create/:email/:name/:location/:date', async (req, res) => {
-    createJob(res, req.params);
+    utilities.createJob(res, req.params);
 });
-
-async function createUser(response, userInfo) {
-    if (userExists(userInfo.email)) {
-        response.status(400).json({ error: 'User already exists '});
-    } else {
-        //reload of some kind here?
-        users[userInfo.email] = userInfo;
-        users[userInfo.email].applied = [];
-        await save(users, usersFile);
-        response.json(users[userInfo.email]);
-    }
-}
-
-async function createEmployer(response, employerInfo) {
-    if (employerExists(employerInfo.email)) {
-        response.status(400).json({ error: 'Employer already exists '});
-    } else {
-        //reload of some kind here?
-        employers[employerInfo.email] = employerInfo;
-        employers[employerInfo.email].activeJobs = [];
-        await save(employers, employersFile);
-        response.json(employers[employerInfo.email]);
-    }
-}
-
-async function createJob(response, info) {
-    let jobID = generateJobId(); //creates unique id
-    jobs[jobID] = info;
-    jobs[jobID].applicants = [];
-    await save(jobs, jobsFile);
-    employers[info.email].activeJobs.push(jobID);  //adds jobID to employer's active job array
-    await save(employers, employersFile);
-    response.json(jobs[jobID]);
-}
 
 
 
@@ -162,33 +124,20 @@ app.get('/employers', (req, res) => {
 
 //specified user applys to specified job
 app.put('/user/:email/apply/:jobID', async (req, res) => {
-    apply(res, req.params.email, req.params.jobID);
+    utilities.apply(res, req.params.email, req.params.jobID);
 });
 
-async function apply(response, user, jobID) {
-    if (!userExists(user)) {
-        response.status(404).json({ error: 'user not found '});
-    }
-    if (!jobExists(jobID)) {
-        response.status(404).json({ error: 'job not found' });
-    }
-    users[user].applied.push(jobID);
-    jobs[jobID].applicants.push(email);
-    await save(users, usersFile);
-    await save(jobs, jobsFile);
-    response.status(204);
-}
+
 
 
 //DELETE STUFF HERE:
 
 app.delete('/job/delete/:jobID', async (req, res) => {
-    deleteJob(req.param.jobID);
+    utilities.deleteJob(req.param.jobID);
 });
 
-async function deleteJob(jobID) {
 
-}
+
 
 
 app.get('*', (req, res) => {
@@ -199,40 +148,3 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
-
-
-
-
-//RANDOM HELPER FUNCTIONS HERE:
-
-function userExists(email) { 
-    return email in users;
-}
-
-function employerExists(email) {
-    return email in employers;
-}
-
-function jobExists(jobID) {
-    return jobID in jobs;
-}
-
-function generateJobId() {
-    let id = Math.floor(100000 + Math.random() * 900000);
-    if (id in jobs) {
-        generateJobId();
-    }
-    return id; 
-}
-
-async function save(obj, file) {
-    try {
-        const data = JSON.stringify(obj);
-        await writeFile(file, data, { encoding: 'utf8' })
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-
-
