@@ -134,4 +134,5 @@ export function search(text, location, date) {
         });
     }
     return result;
+    
 }
