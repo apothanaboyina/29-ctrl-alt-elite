@@ -10,58 +10,8 @@ export const usersFile = 'users.json';
 export const employersFile = 'employers.json';
 export const jobsFile = 'jobs.json';
 
-export async function createUser(response, userInfo) {
-    if (userExists(userInfo.email)) {
-        response.status(400).json({ error: 'User already exists '});
-    } else {
-        //reload of some kind here?
-        users[userInfo.email] = userInfo;
-        users[userInfo.email].applied = [];
-        await save(users, usersFile);
-        response.json(users[userInfo.email]);
-    }
-}
 
-export async function createEmployer(response, employerInfo) {
-    if (employerExists(employerInfo.email)) {
-        response.status(400).json({ error: 'Employer already exists '});
-    } else {
-        //reload of some kind here?
-        employers[employerInfo.email] = employerInfo;
-        employers[employerInfo.email].activeJobs = [];
-        await save(employers, employersFile);
-        response.json(employers[employerInfo.email]);
-    }
-}
-
-export async function createJob(response, info) {
-    let jobID = generateJobId(); //creates unique id
-    jobs[jobID] = info;
-    jobs[jobID].applicants = [];
-    await save(jobs, jobsFile);
-    employers[info.email].activeJobs.push(jobID);  //adds jobID to employer's active job array
-    await save(employers, employersFile);
-    response.json(jobs[jobID]);
-}
-
-export async function apply(response, user, jobID) {
-    if (!userExists(user)) {
-        response.status(404).json({ error: 'user not found '});
-    }
-    if (!jobExists(jobID)) {
-        response.status(404).json({ error: 'job not found' });
-    }
-    users[user].applied.push(jobID);
-    jobs[jobID].applicants.push(email);
-    await save(users, usersFile);
-    await save(jobs, jobsFile);
-    response.status(204);
-}
-
-export async function deleteJob(jobID) {
-
-}
-
+//UTILITY FUNCTIONS BELOW:
 export function userExists(email) { 
     return email in users;
 }
@@ -134,5 +84,116 @@ export function search(text, location, date) {
         });
     }
     return result;
+<<<<<<< HEAD
     
 }
+=======
+}
+
+
+
+//CRUD FUNCTIONS BELOW:
+export async function createUser(response, userInfo) {
+    if (userExists(userInfo.email)) {
+        response.status(400).json({ error: 'User already exists '});
+    } else {
+        //reload of some kind here?
+        users[userInfo.email] = userInfo;
+        users[userInfo.email].applied = [];
+        await save(users, usersFile);
+        response.json(users[userInfo.email]);
+    }
+}
+
+export async function createEmployer(response, employerInfo) {
+    if (employerExists(employerInfo.email)) {
+        response.status(400).json({ error: 'Employer already exists '});
+    } else {
+        //reload of some kind here?
+        employers[employerInfo.email] = employerInfo;
+        employers[employerInfo.email].activeJobs = [];
+        await save(employers, employersFile);
+        response.json(employers[employerInfo.email]);
+    }
+}
+
+export async function createJob(response, info) {
+    let jobID = generateJobId(); //creates unique id
+    jobs[jobID] = info;
+    jobs[jobID].applicants = [];
+    await save(jobs, jobsFile);
+    employers[info.email].activeJobs.push(jobID);  //adds jobID to employer's active job array
+    await save(employers, employersFile);
+    response.json(jobs[jobID]);
+}
+
+export async function readJob(response, jobID) {
+    if (jobExists(jobID)) {
+        response.json({ jobID: jobs[jobID]});
+    } else {
+        response.json({ error: 'job not found'});
+    }
+}
+
+export async function readUser(response, email) {
+    if (userExists(email)) {
+        response.json({ email: users[email]});
+    } else {
+        response.json({ error: 'user not found'});
+    }
+}
+
+export async function readEmployer(response, email) {
+    if (employerExists(email)) {
+        response.json({ email: employers[email]});
+    } else {
+        response.json({ error: 'employer not found'});
+    }
+}
+
+//this is to update both user and employer
+export async function apply(response, user, jobID) {
+    if (!userExists(user)) {
+        response.status(404).json({ error: 'user not found '});
+    }
+    if (!jobExists(jobID)) {
+        response.status(404).json({ error: 'job not found' });
+    }
+    users[user].applied.push(jobID);
+    jobs[jobID].applicants.push(email);
+    await save(users, usersFile);
+    await save(jobs, jobsFile);
+    response.status(204);
+}
+
+export async function deleteJob(response, jobID) {
+    if (jobExists(jobID)) {
+        response.status(200);
+        delete jobs[jobID];
+        await save(jobs, jobsFile);
+        //put something here to get rid of it in employers and users jobs list
+    } else {
+        response.status(404).json({ error: 'job not found' });
+    }
+}
+
+export async function deleteUser(response, email) {
+    if (userExists(email)) {
+        response.status(200);
+        delete users[email];
+        await save(users, usersFile);
+    } else {
+        response.status(404).json({ error: 'user not found' });
+    }
+}
+
+export async function deleteEmployer(response, email) {
+    if (userExists(email)) {
+        response.status(200);
+        delete employers[email];
+        await save(employers, employersFile);
+    } else {
+        response.status(404).json({ error: 'employer not found' });
+    }
+}
+>>>>>>> 560110fd10ac9cae02222a0d32aad6945f7a0be4
