@@ -84,12 +84,7 @@ export function search(text, location, date) {
         });
     }
     return result;
-<<<<<<< HEAD
-    
 }
-=======
-}
-
 
 
 //CRUD FUNCTIONS BELOW:
@@ -196,4 +191,3 @@ export async function deleteEmployer(response, email) {
         response.status(404).json({ error: 'employer not found' });
     }
 }
->>>>>>> 560110fd10ac9cae02222a0d32aad6945f7a0be4
