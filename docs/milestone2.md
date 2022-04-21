@@ -5,7 +5,6 @@
 # Team Overview
 
 * Aditya Pothanaboyina: apothanaboyina
-* Adonay Bereket: abereket7
 * Amanda Katt: akatt1221
 
 # Innovative Idea
@@ -74,5 +73,6 @@ As a group, we would like to address these obstacles and create a web applicatio
     * Created js files for all of the pages and heavily worked on search.js, login.js, index.js, and jobDescription.js
 * Aditya:
     * Worked on applicants.js and employerinterface.js on employer side
-    * 
+    * Created CRUD operations for jobs
+    * Created milestone2 markdown file
 
