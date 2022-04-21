@@ -32,38 +32,38 @@
               <h6>Hourly Pay Rate: $14</h6>
               <h6>Hours Per Week: 10-20</h6>
               <h6>Location: On-Campus</h6>
-              <button class="btn btn-primary" type="submit">View Applications</button>
-              <button class="btn btn-primary" type="submit">Edit Job Posting</button>
+              <button class="btn btn-primary" id="view" type="submit">View Applications</button>
+              <button class="btn btn-primary" id="edit" type="submit">Edit Job Posting</button>
           </div>
         </div>
         <div class="col s3" id="secondcol">
           <h3 id = "newpost">Create New Posting</h3>
           <div id="form1">
             <label for="fname">Job Title:</label><br>
-            <input type="text" id="fname" name="firstname" placeholder="Title">
+            <input type="text" id="title" placeholder="Title">
 
             <label id ="jd">Job Description:</label><br>
-            <textarea id="desc" name="lastname" placeholder="250-500 words"></textarea>
+            <textarea id="desc" placeholder="250-500 words"></textarea>
 
             <label>Hourly Pay Rate: $</label>
             <div class="form-outline">
-              <input type="text" id="typeNumber" class="form-control" />
+              <input type="text" id="rate" class="form-control" />
               <label class="form-label" for="typeNumber"></label>
             </div>
 
             <label>Hours per Week: </label><br>
-            <input type="number" id="minhoursperweek" min="1" max="60"> to <input type="number" id="maxhoursperweek" min="1" max="60"><br>
+            <input type="number" id="hours" min="1" max="60"> to <input type="number" id="maxhoursperweek" min="1" max="60"><br>
 
             <div>
-              <label for="lname">Location: </label><br>
-              <select class="form-control" name="location">
+              <label>Location: </label><br>
+              <select class="form-control" id="location" name="location">
                 <option value="" disabled selected>Location</option>
                 <option>On-Campus</option>
                 <option>Off-Campus</option>
                 <option>Both</option>
               </select>
             </div><br>
-            <button class="btn btn-primary" type="submit">Post</button>
+            <button class="btn btn-primary" id="post" type="submit">Post</button>
           </div>
         </div>
       </div>
