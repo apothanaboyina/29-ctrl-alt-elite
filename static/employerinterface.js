@@ -14,4 +14,9 @@ post.addEventListener("click", () => {
     const location = document.getElementById("location");
 
     
+
+});
+
+view.addEventListener("click", () => {
+    window.location.href = url + '/employer/:jobID/applicants'
 });

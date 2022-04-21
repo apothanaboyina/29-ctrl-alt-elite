@@ -46,31 +46,33 @@ As a group, we would like to address these obstacles and create a web applicatio
     * Date created
     * List of applicants*
 
-API Endpoints:    (these are not accurate anymore)
-/user/login: logs user profiles in
-/employer/login: logs employer profiles in
-/user/create/:email/:name : creates new user
-/employer/create/:email/:name : creates new employer
-/employer/job/create/:email/:name/:location/:date : creates new job
-/jobs : response will be JSON object representing all jobs
-/users : response will be JSON object representing all users
-/employers: response will be JSON object representing all employers
-/employer/job/:jobID: response will be JSON object of specified job
-/employer/:email: response will be JSON object of specified employer
-/user/:email: response will be JSON object of specified user
-/user/:email/apply/:jobID : Specified user applies to specified job. Adds jobID to list of applied jobs for user, adds email to list of applicants for specific jobs
-/employer/jobs/delete/:jobID: deletes specified job
-/employer/delete/:email : deletes specified employer
-/user/delete/:email : deletes specified user
+# API Endpoints:
+* /user/login: logs user profiles in
+* /employer/login: logs employer profiles in
+* /user/create/:email/:name : creates new user
+* /employer/create/:email/:name : creates new employer
+* /employer/job/create/:email/:name/:location/:date : creates new job
+* /jobs : response will be JSON object representing all jobs
+* /users : response will be JSON object representing all users
+* /employers: response will be JSON object representing all employers
+* /employer/job/:jobID: response will be JSON object of specified job
+* /employer/:email: response will be JSON object of specified employer
+* /user/:email: response will be JSON object of specified user
+* /user/:email/apply/:jobID : Specified user applies to specified job. Adds jobID to list of applied jobs for user, adds email to list of applicants for specific jobs
+* /employer/jobs/delete/:jobID: deletes specified job
+* /employer/delete/:email : deletes specified employer
+* /user/delete/:email : deletes specified user
 
 # Work Distribution
 * Amanda:
-    Created jobDescription html and css
-    Created Index.html and index.css
-    Initialized server.js
-    API Endpoints
-    Utilities.js functions (CRUD functions)
-    Routes to html pages
-    Created js files for all of the pages and heavily worked on search.js, login.js, index.js, and jobDescription.js
+    * Created jobDescription html and css
+    * Created Index.html and index.css
+    * Initialized server.js
+    * API Endpoints
+    * Utilities.js functions (CRUD functions)
+    * Routes to html pages
+    * Created js files for all of the pages and heavily worked on search.js, login.js, index.js, and jobDescription.js
 * Aditya:
-    
+    * Worked on applicants.js and employerinterface.js on employer side
+    * 
+

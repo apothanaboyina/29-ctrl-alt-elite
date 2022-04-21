@@ -7,7 +7,7 @@ import { usersFile, employersFile, jobsFile } from 'utilities.js';
 const { check, validationResult } = require('express-validator');
 const bodyParser = require('body-parser'); 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -102,7 +102,7 @@ app.post('/employer/create/:email/:name', async (req, res) => {
 });
 
 //creates new job
-app.post('/employer/job/create/:email/:name/:location/:date', async (req, res) => {
+app.post('/employer/job/create/:email/:title/::location/:date', async (req, res) => {
     utilities.createJob(res, req.params);
 });
 
