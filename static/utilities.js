@@ -2,64 +2,95 @@ import { writeFile } from 'fs';
 //this is not the official url but just example for now
 const url = "https://ctrl-alt-elite-umass-job-board";
 
-export const users = {};
-export const employers = {};
-export const jobs = {};
-
 export const usersFile = 'users.json';
-export const employersFile = 'employers.json';
 export const jobsFile = 'jobs.json';
 
 
 //UTILITY FUNCTIONS BELOW:
-export function userExists(email) { 
-    return email in users;
+//gonna have to change the exists functions TODO
+export async function userExists(email) { 
+    const users = await readUsers();
+    const result = users.filter((user) => user.email === email);
+    return result.length > 0;
 }
 
-export function employerExists(email) {
-    return email in employers;
+export async function jobExists(jobID) {
+    const jobs = await readJobs();
+    const result = jobs.filter((job) => job.jobID === jobID);
+    return result.length > 0;
 }
 
-export function jobExists(jobID) {
-    return jobID in jobs;
-}
-
-export function generateJobId() {
-    let id = Math.floor(100000 + Math.random() * 900000);
-    if (id in jobs) {
-        generateJobId();
-    }
-    return id; 
-}
-
-export async function createEmployer(email, password, fname, lname) {
-    
-
-}
-
-export async function save(obj, file) {
-    try {
-        const data = JSON.stringify(obj);
-        await writeFile(file, data, { encoding: 'utf8' })
-    } catch (err) {
-        console.log(err);
+//new functions for saving to server
+export function readFile(path) {
+    return async () => {
+        try {
+            const usersFile = await readFile(path, 'utf8');
+            const users = JSON.parse(usersFile);
+            return users;
+        } catch (error) {
+            return [];
+        }
     }
 }
+
+//Create functions for reading from files
+const readUsers = readFile(usersFile);
+const readJobs = readFile(jobsFile);
+
+//used to create a new user and add them to users file
+export function saveUserToFile(path) {
+    return async (email, name) => {
+        const applied = [];
+        const data = { email, name, applied };
+        const users = await readUsers();
+        users.push(data);
+        writeFile(path, JSON.stringify(users), 'utf8');
+    };
+}
+
+//used to create a new job and add them to jobs file
+//not sure if we will need to use this yet
+export function saveJobToFile(path) {
+    return async (jobID, name, location, date) => {
+        const applicants = [];
+        const data = { jobID, name, location, date, applicants };
+        const jobs = await readJobs();
+        jobs.push(data);
+        writeFile(path, JSON.stringify(jobs), 'utf8');
+    };
+}
+
+//used when user applies to a job
+//saves job to applied list for user and saves user to applicant list for job
+export function saveApplicationToFile(userpath, jobpath) {
+    return async (email, jobID) => {
+        const users = await readUsers();
+        const jobs = await readJobs();
+        const userIndex = users.findIndex((user) => { user.email === email });
+        const jobIndex = jobs.findIndex((job) => { job.jobID === jobID });
+        users[userIndex].applied.push(jobID);
+        jobs[jobIndex].applicants.push(email);
+        writeFile(userpath, JSON.stringify(users), 'utf8');
+        writeFile(jobpath, JSON.stringify(jobs), 'utf8');
+    };
+}
+
+//Create functions for saving new users, jobs, and applications
+const saveUser = saveUserToFile(usersFile);
+const saveJob = saveJobToFile(jobsFile);
+const saveApplication = saveApplicationToFile(usersFile, jobsFile);
+
 
 export function search(text, location, date) {
-    let result = jobs;
+    let result = await readJobs();
     if (location !== NULL) {
         //if location is "Both", then there is no need to filter
         if (location === "On-Campus" || location === "Off-Campus") {
-            Object.keys(result).filter((e) => {
-                return result[e].name === location;
-            });
+            result = result.filter((job) => job.location === location);
         }
     }
     if (text !== NULL) {
-        Object.keys(result).filter((e) => {
-            return result[e].name.includes(text);
-        });
+        result = result.filter((job) => { job.name.includes(text) });
     }
     //if date is more than month then there is no need to filter
     if (date !== NULL && date !== 'More than month') {
@@ -82,117 +113,11 @@ export function search(text, location, date) {
                 days = 365;
                 break;
         }
-        Object.keys(result).filter((e) => {
-            let date = new Date(result[e].date);
+        result = result.filter((job) => {
+            let date = new Date(job.date); //not sure yet if job is saved as date or not
             let difference = (today.getTime() - date.getTime()) / (1000 * 60 * 60 *24);
             return difference <= days;
         });
     }
     return result;
-}
-
-
-//CRUD FUNCTIONS BELOW:
-export async function createUser(response, userInfo) {
-    if (userExists(userInfo.email)) {
-        response.status(400).json({ error: 'User already exists '});
-    } else {
-        //reload of some kind here?
-        users[userInfo.email] = userInfo;
-        users[userInfo.email].applied = [];
-        await save(users, usersFile);
-        response.json(users[userInfo.email]);
-    }
-}
-
-export async function createEmployer(response, employerInfo) {
-    if (employerExists(employerInfo.email)) {
-        response.status(400).json({ error: 'Employer already exists '});
-    } else {
-        //reload of some kind here?
-        employers[employerInfo.email] = employerInfo;
-        employers[employerInfo.email].activeJobs = [];
-        await save(employers, employersFile);
-        response.json(employers[employerInfo.email]);
-    }
-}
-
-export async function createJob(response, info) {
-    let jobID = generateJobId(); //creates unique id
-    jobs[jobID] = info;
-    jobs[jobID].applicants = [];
-    await save(jobs, jobsFile);
-    employers[info.email].activeJobs.push(jobID);  //adds jobID to employer's active job array
-    await save(employers, employersFile);
-    response.json(jobs[jobID]);
-}
-
-export async function readJob(response, jobID) {
-    if (jobExists(jobID)) {
-        response.json({ jobID: jobs[jobID]});
-    } else {
-        response.json({ error: 'job not found'});
-    }
-}
-
-export async function readUser(response, email) {
-    if (userExists(email)) {
-        response.json({ email: users[email]});
-    } else {
-        response.json({ error: 'user not found'});
-    }
-}
-
-export async function readEmployer(response, email) {
-    if (employerExists(email)) {
-        response.json({ email: employers[email]});
-    } else {
-        response.json({ error: 'employer not found'});
-    }
-}
-
-//this is to update both user and employer
-export async function apply(response, user, jobID) {
-    if (!userExists(user)) {
-        response.status(404).json({ error: 'user not found '});
-    }
-    if (!jobExists(jobID)) {
-        response.status(404).json({ error: 'job not found' });
-    }
-    users[user].applied.push(jobID);
-    jobs[jobID].applicants.push(email);
-    await save(users, usersFile);
-    await save(jobs, jobsFile);
-    response.status(204);
-}
-
-export async function deleteJob(response, jobID) {
-    if (jobExists(jobID)) {
-        response.status(200);
-        delete jobs[jobID];
-        await save(jobs, jobsFile);
-        //put something here to get rid of it in employers and users jobs list
-    } else {
-        response.status(404).json({ error: 'job not found' });
-    }
-}
-
-export async function deleteUser(response, email) {
-    if (userExists(email)) {
-        response.status(200);
-        delete users[email];
-        await save(users, usersFile);
-    } else {
-        response.status(404).json({ error: 'user not found' });
-    }
-}
-
-export async function deleteEmployer(response, email) {
-    if (userExists(email)) {
-        response.status(200);
-        delete employers[email];
-        await save(employers, employersFile);
-    } else {
-        response.status(404).json({ error: 'employer not found' });
-    }
 }
