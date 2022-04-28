@@ -20,7 +20,6 @@ export async function jobExists(jobID) {
     return result.length > 0;
 }
 
-<<<<<<< HEAD
 export function jobExists(jobID) {
     return jobID in jobs;
 }
@@ -40,18 +39,6 @@ export async function save(obj, file) {
         await writeFile(file, data, { encoding: 'utf8' })
     } catch (err) {
         console.log(err);
-=======
-//new functions for saving to server
-export function readFile(path) {
-    return async () => {
-        try {
-            const usersFile = await readFile(path, 'utf8');
-            const users = JSON.parse(usersFile);
-            return users;
-        } catch (error) {
-            return [];
-        }
->>>>>>> 40f38cbe0631ee0210cd8e7f79c9bd3b042363b8
     }
 }
 

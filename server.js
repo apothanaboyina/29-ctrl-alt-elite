@@ -5,26 +5,20 @@ import logger from 'morgan';
 import * as utilities from 'utilities.js';
 //import { users, employers, jobs } from 'utilities.js';
 import { usersFile, employersFile, jobsFile } from 'utilities.js';
-<<<<<<< HEAD
 import { generateJobId } from './static/utilities';
  
-=======
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import auth from './auth.js';
 import users from './users.js';
 
->>>>>>> 40f38cbe0631ee0210cd8e7f79c9bd3b042363b8
 const { check, validationResult } = require('express-validator');
 //const bodyParser = require('body-parser'); 
 const app = express();
-<<<<<<< HEAD
-const port = 3000;
-=======
+//const port = 3000;
 const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(dirname(__filename));
->>>>>>> 40f38cbe0631ee0210cd8e7f79c9bd3b042363b8
 
 app.use(logger('dev'));
 app.use(expressSession(sessionConfig));
@@ -134,7 +128,6 @@ app.post('/user/create/:email/:name', async (request, response) => {
     }
 });
 
-<<<<<<< HEAD
 //creates new employer
 app.post('/employer/create/:email/:name', async (req, res) => {
     utilities.createEmployer(res, req.params);
@@ -148,8 +141,6 @@ app.post('/employer/job/create/:email/:title/:desc/:rate/:hours/:location/:date'
 
 
 
-=======
->>>>>>> 40f38cbe0631ee0210cd8e7f79c9bd3b042363b8
 //READ STUFF HERE:
 
 //response will be JSON object representing all jobs 
