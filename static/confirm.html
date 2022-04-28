@@ -11,21 +11,17 @@
     <script src="login.js"></script>
   </head>
   <body>
-    <form action="/login" method="post">
+    <form>
         <div class="container-fluid">
             <br><h1>UMass Job Board</h1>
         </div><br>
         <div class="container">
-          <h2>Sign in</h2><br>
-          <label for="email"><b>Email</b></label>
-          <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
-          <label>
-              <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label><br>
-          <button id="loginButton" class="btn btn-primary" type="submit">Login</button>
+          <h2>Congrats, you have applied to : JobName</h2><br>
+          <div id="userInfo">
+              <h3>Your information: </h3><br>
+              <p>email: akatt@umass.edu</p>
+              <p>spireID: 00000000</p>
+          </div>
           <button id="signUpButton" class="btn btn-primary" type="submit">Sign Up</button>
         </div>
     </form>
