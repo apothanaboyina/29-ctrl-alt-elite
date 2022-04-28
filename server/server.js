@@ -5,6 +5,8 @@ import logger from 'morgan';
 import * as utilities from 'utilities.js';
 //import { users, employers, jobs } from 'utilities.js';
 import { usersFile, employersFile, jobsFile } from 'utilities.js';
+import { generateJobId } from './static/utilities';
+ 
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import auth from './auth.js';
@@ -13,6 +15,7 @@ import users from './users.js';
 const { check, validationResult } = require('express-validator');
 //const bodyParser = require('body-parser'); 
 const app = express();
+//const port = 3000;
 const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(dirname(__filename));
@@ -122,6 +125,19 @@ app.post('/user/create/:email/:name', async (request, response) => {
         response.status(200).json({ status: 'success'});
     }
 });
+
+//creates new employer
+app.post('/employer/create/:email/:name', async (req, res) => {
+    utilities.createEmployer(res, req.params);
+});
+
+//creates new job
+app.post('/employer/job/create/:email/:title/:desc/:rate/:hours/:location/:date', async (req, res) => {
+    utilities.createJob(res, req.params);
+});
+
+
+
 
 //READ STUFF HERE:
 

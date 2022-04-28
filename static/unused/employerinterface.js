@@ -13,10 +13,8 @@ post.addEventListener("click", () => {
     const hours = document.getElementById("hours");
     const location = document.getElementById("location");
 
-    
-
 });
 
 view.addEventListener("click", () => {
-    window.location.href = url + '/employer/:jobID/applicants'
+    window.location.href = url + '/employer/jobID/applicants'
 });

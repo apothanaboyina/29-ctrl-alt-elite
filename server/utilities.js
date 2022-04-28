@@ -20,16 +20,25 @@ export async function jobExists(jobID) {
     return result.length > 0;
 }
 
-//new functions for saving to server
-export function readFile(path) {
-    return async () => {
-        try {
-            const usersFile = await readFile(path, 'utf8');
-            const users = JSON.parse(usersFile);
-            return users;
-        } catch (error) {
-            return [];
-        }
+export function jobExists(jobID) {
+    return jobID in jobs;
+}
+
+export function generateJobId() {
+    let id = Math.floor(100000 + Math.random() * 900000);
+    if (id in jobs) {
+        generateJobId();
+    }
+    return id; 
+}
+
+
+export async function save(obj, file) {
+    try {
+        const data = JSON.stringify(obj);
+        await writeFile(file, data, { encoding: 'utf8' })
+    } catch (err) {
+        console.log(err);
     }
 }
 
