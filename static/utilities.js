@@ -32,10 +32,6 @@ export function generateJobId() {
     return id; 
 }
 
-export async function createEmployer(email, password, fname, lname) {
-    
-
-}
 
 export async function save(obj, file) {
     try {

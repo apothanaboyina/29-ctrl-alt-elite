@@ -3,11 +3,12 @@ import logger from 'morgan';
 import * as utilities from 'utilities.js';
 import { users, employers, jobs } from 'utilities.js';
 import { usersFile, employersFile, jobsFile } from 'utilities.js';
+import { generateJobId } from './static/utilities';
  
 const { check, validationResult } = require('express-validator');
 const bodyParser = require('body-parser'); 
 const app = express();
-const port = 8080;
+const port = 3000;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -102,7 +103,7 @@ app.post('/employer/create/:email/:name', async (req, res) => {
 });
 
 //creates new job
-app.post('/employer/job/create/:email/:title/::location/:date', async (req, res) => {
+app.post('/employer/job/create/:email/:title/:desc/:rate/:hours/:location/:date', async (req, res) => {
     utilities.createJob(res, req.params);
 });
 
