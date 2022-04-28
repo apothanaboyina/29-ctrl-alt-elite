@@ -61,8 +61,6 @@ app.get(':jobID/description', (req, res) => {
     res.sendFile('static/jobDescription.html', { root: __dirname });
 });
 
-
-
 //LOGIN SERVER CODE HERE:
 //for process input below
 var loginValidation = [
@@ -163,6 +161,15 @@ app.get('/user/:email', async (request, response) => {
     }
 });
 
+//used when searching for jobs
+//response will be JSON of all jobs that match search results
+app.get('/jobs/search/:text/:location/:date', async (request, response) => {
+    const text = request.body.text;
+    const location = request.body.location;
+    const date = request.body.date;
+    const jobs = await utilities.search(text, location, date);
+    response.status(200).json(jobs);
+}); 
 
 //UPDATE STUFF HERE:
 
@@ -171,11 +178,10 @@ app.put('/user/:email/apply/:jobID', async (req, res) => {
     utilities.apply(res, req.params.email, req.params.jobID);
 });
 
-
-
-
 //DELETE STUFF HERE:
-app.delete('/employer/job/delete/:jobID', async (request, response) => {
+
+//deletes specified job
+app.delete('/job/delete/:jobID', async (request, response) => {
     const jobID = request.body.jobID;
     if (await utilities.jobExists(jobID)) {
         let jobs = await utilities.readJobs();

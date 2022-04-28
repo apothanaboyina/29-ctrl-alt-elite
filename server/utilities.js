@@ -51,9 +51,9 @@ export function saveUserToFile(path) {
 //used to create a new job and add them to jobs file
 //not sure if we will need to use this yet
 export function saveJobToFile(path) {
-    return async (jobID, name, location, date) => {
+    return async (jobID, name, location, date, pay, hourlow, hourhigh, description) => {
         const applicants = [];
-        const data = { jobID, name, location, date, applicants };
+        const data = { jobID, name, location, date, pay, hourlow, hourhigh, description, applicants };
         const jobs = await readJobs();
         jobs.push(data);
         writeFile(path, JSON.stringify(jobs), 'utf8');
@@ -81,7 +81,7 @@ const saveJob = saveJobToFile(jobsFile);
 const saveApplication = saveApplicationToFile(usersFile, jobsFile);
 
 
-export function search(text, location, date) {
+export async function search(text, location, date) {
     let result = await readJobs();
     if (location !== NULL) {
         //if location is "Both", then there is no need to filter
