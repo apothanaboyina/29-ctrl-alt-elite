@@ -15,9 +15,7 @@ readmore.addEventListener("click", () => {
 
 });
 
-apply.addEventListener("click", () => {
-
-});
+apply.addEventListener("click", utilities.apply(putparametershere));
 
 async function doSearch() {
     const searchRequest = await fetch('/jobs/search/:text/:location/:date');
@@ -107,6 +105,7 @@ function displayJob(name, pay, hourlow, hourhigh, location, description) {
     description1.innerText = description;
     payrate.innerText = '$' + pay + ' hourly pay rate';
     hours.innerText = hourlow + ' - ' + hourhigh;
+    loc.innerText = location;
 
     container.appendChild(title1);
     container.appendChild(description1);

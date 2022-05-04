@@ -24,6 +24,7 @@ export function jobExists(jobID) {
     return jobID in jobs;
 }
 
+//generates a unique 6 digit id
 export function generateJobId() {
     let id = Math.floor(100000 + Math.random() * 900000);
     if (id in jobs) {
@@ -32,19 +33,20 @@ export function generateJobId() {
     return id; 
 }
 
-
-export async function save(obj, file) {
-    try {
-        const data = JSON.stringify(obj);
-        await writeFile(file, data, { encoding: 'utf8' })
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 //Create functions for reading from files
 const readUsers = readFile(usersFile);
 const readJobs = readFile(jobsFile);
+
+export function getJobName(jobID) {
+    const jobs = await readJobs();
+    let name;
+    jobs.forEach((job) => {
+        if(job.jobID === jobID) {
+            name = job.name;
+        }
+    });
+    return name;
+}
 
 //used to create a new user and add them to users file
 export function saveUserToFile(path) {
