@@ -39,10 +39,14 @@ button {
 }
   
 .container {
-    padding: 16px;
-    width: 80%;
-    margin: auto;
+    padding: 30px;
+    width: 47%;
+    margin: 30px 30px;
     background-color: white;
+}
+
+#main {
+    display: flex;
 }
 
 .container-fluid {

@@ -3,6 +3,7 @@ const url = "https://ctrl-alt-elite-umass-job-board";
 
 const search = document.getElementById("searchButton");
 const goback = document.getElementById("backButton");
+const apply = document.getElementById("applyButton");
 
 goback.addEventListener("click", () => {
     window.history.back();
