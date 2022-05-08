@@ -35,4 +35,5 @@ Job Document
     updating javascript in static folder to match updated server
 
 * Aditya:
-    Deployed
+    Deployed app on Heroku
+    Created user interface js and html files(after restructuring project scope)
