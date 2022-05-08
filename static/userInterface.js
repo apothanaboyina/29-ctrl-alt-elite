@@ -2,10 +2,17 @@ import * as utilities from 'utilities.js';
 //this is not the official url but just example for now
 const url = "https://ctrl-alt-elite-umass-job-board";
 
-const searchbar = document.getElementById("searchbar");
 const search = document.getElementById("searchButton");
-const location = document.getElementById("location");
-const date = document.getElementById("date");
+
+search.addEventListener("click", () => {
+    const searchbar = document.getElementById("searchbar");
+    const location = document.getElementById("location");
+    const date = document.getElementById("date");
+    localStorage.setItem('searchbar', searchbar);
+    localStorage.setItem('location', location);
+    localStorage.setItem('date', date);
+    window.location.href = url + "/user/search";
+});
 
 //gets current user email from url
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -17,7 +24,6 @@ const userRequest = await fetch(fetchString);
 const userData = userRequest.ok ? await userRequest.json() : [];
 
 function displayAppliedJobs() {
-    //<li class="list-group-item">Vestibulum at eros</li>
     const jobList = document.getElementById('appliedList');
     const jobs = userData.applied;
     for (let i = 0; i < jobs.length; i++) {

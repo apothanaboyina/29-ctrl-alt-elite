@@ -3,17 +3,11 @@ import * as utilities from 'utilities.js';
 const url = "https://ctrl-alt-elite-umass-job-board";
 
 const search = document.getElementById("searchButton");
-const readmore = document.getElementById("readButton");
-const apply = document.getElementById("applyButton");
 const searchbar = document.getElementById("searchbar");
 const location = document.getElementById("location");
 const date = document.getElementById("date");
 
 search.addEventListener("click", doSearch);
-
-readmore.addEventListener("click", () => {
-
-});
 
 apply.addEventListener("click", utilities.apply(putparametershere));
 
@@ -83,7 +77,7 @@ window.onload = function() {
     localStorage.clear();
 }
 
-function displayJob(name, pay, hourlow, hourhigh, location, description) {
+function displayJob(name, date, pay, hourlow, hourhigh, location, description) {
     const container = document.createElement('div');
     container.classList.add('container');
     const title1 = document.createElement('h4');
@@ -91,6 +85,7 @@ function displayJob(name, pay, hourlow, hourhigh, location, description) {
     const payrate = document.createElement('h6');
     const hours = document.createElement('h6');
     const loc = document.createElement('h6');
+    const date1 = document.createElement('h6');
     const readButton = document.createElement('button');
     const applyButton = document.createElement('button');
     const br = document.createElement('br');
@@ -106,12 +101,14 @@ function displayJob(name, pay, hourlow, hourhigh, location, description) {
     payrate.innerText = '$' + pay + ' hourly pay rate';
     hours.innerText = hourlow + ' - ' + hourhigh;
     loc.innerText = location;
+    date1.innerText = date;
 
     container.appendChild(title1);
     container.appendChild(description1);
     container.appendChild(payrate);
     container.appendChild(hours);
     container.appendChild(loc);
+    container.appendChild(date1);
     
     const jobsContainer = document.getElementById('jobsContainer');
     jobsContainer.appendChild(container);
