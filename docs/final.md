@@ -2,6 +2,10 @@
 
 # Spring 2022
 
+# Links
+Youtube: https://www.youtube.com/watch?v=NSOKBjGXPqM
+Heroku: https://gentle-badlands-79766.herokuapp.com/
+
 # Team Overview
 
 * Aditya Pothanaboyina: apothanaboyina
