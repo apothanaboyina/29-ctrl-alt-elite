@@ -40,21 +40,18 @@ We would like to create a web application similar to that of the UMass Student J
     * List of applicants*
 
 # API Endpoints:
-* /user/login: logs user profiles in
-* /employer/login: logs employer profiles in
+* /login: logs user profiles in
+* /logout: logs user profiles out
 * /user/create/:email/:name : creates new user
-* /employer/create/:email/:name : creates new employer
-* /employer/job/create/:email/:name/:location/:date : creates new job
 * /jobs : response will be JSON object representing all jobs
 * /users : response will be JSON object representing all users
-* /employers: response will be JSON object representing all employers
-* /employer/job/:jobID: response will be JSON object of specified job
-* /employer/:email: response will be JSON object of specified employer
 * /user/:email: response will be JSON object of specified user
+* /job/:jobId: response will be JSON object of specified job
+* /jobs/search/:text/:location/:date : response will wil be JSON of all jobs that match search results
 * /user/:email/apply/:jobID : Specified user applies to specified job. Adds jobID to list of applied jobs for user, adds email to list of applicants for specific jobs
-* /employer/jobs/delete/:jobID: deletes specified job
-* /employer/delete/:email : deletes specified employer
 * /user/delete/:email : deletes specified user
+* /job/delete/:jobId: deletes specified job
+* 
 
 # Work Distribution
 * Amanda:
