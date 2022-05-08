@@ -38,21 +38,19 @@ class JobSearchServer {
             res.sendFile('static/login.html', { root: __dirname });
         });
 
-        /**
-        app.get('/register', (req, res) =>
-        res.sendFile('static/register.html', { root: __dirname })
-        );
-        */
-
         //route to user search page
         this.app.get('/search', (req, res) => {
             res.sendFile('static/search.html', { root: __dirname });
         });
 
         //route to job description of specified job for users to view
-        this.app.get(':jobID/description', (req, res) => {
+        this.app.get('/:jobID/description', (req, res) => {
             res.sendFile('static/jobDescription.html', { root: __dirname });
         });
+
+        this.app.get('/:email/userInterface', (req, res) => {
+            res.sendFile('static/userInterface.html', { root: __dirname });
+        })
 
         //LOGIN SERVER CODE HERE:
         //for process input below
@@ -60,20 +58,6 @@ class JobSearchServer {
             check('email', 'must be a valid email').isEmail().trim().escape().normalizeEmail(),
             check('password').isLength({ min: 8}).withMessage('password must be at least 8 characters').trim().escape()
         ];
-
-        /**
-        //process input
-        app.post('/login', loginValidation, (req, res) => {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(422).json({ errors: errors.array() });
-            } else {
-                let email = req.body.email;
-                let password = req.body.password;
-                res.send(`Email: ${email} Password: ${password} Type: user`);
-            }
-        });
-        */
 
         this.app.post('/login', auth.authenticate('local', {
             successRedirect: '/private',  //when we login, go to /private
@@ -86,20 +70,11 @@ class JobSearchServer {
             res.redirect('/login'); // back to login
         });
 
-        /**
-        app.post('/register', (req, res) => {
-            const { username, password } = req.body;
-            if (users.addUser(username, password)) {
-            res.redirect('/login');
-            } else {
-            res.redirect('/register');
-            }
-        });
-        */
         
         this.app.get('/private', checkLoggedIn, (req, res) => {
             res.redirect('/private/' + req.user);
         });
+
 
         //CREATE STUFF HERE:
 
