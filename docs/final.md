@@ -65,8 +65,24 @@ Users will log into the application using an email and password. The only UI acc
 
 # Work Distribution
 * Amanda:
+   * Created wireframs and html/css for search page and login page
+   * created jobDescription html and css
+   * created index.html and index.css
+   * initialized server.js
+   * api endpoints
+   * crud functions
+   * routes to html pages
+   * created js files for all of the pages and havily worked on search.js, login.js, index.js and jobDescription.js
+   * creating MongoDB databases including the User Database and the Job Database 
+   * updating the server to make JobBoardServer class
+   * updating javascript in static foler to match updated server
 
 * Aditya:
+   * Created wireframs and html/css files for employer interface and applicant pages
+   * worked on applicants.js and emplyoerinterface.hs on emplyoer side
+   * created crud operations for jobs
+   * created milestone2 markdonw file
+   * heroku deployment
 
 
 # Conclusion
