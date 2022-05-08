@@ -15,6 +15,8 @@ We would like to create a web application similar to that of the UMass Student J
 
 # User Interface
 
+Our user interface has 3 main components. Firstly, the search bar will be available to search for jobs based on filters. Next, the left half of the screen is dedicated to showing the user their application history, to provide information about application status so that users can act quickly. On the right half of the screen, the information about the users will be shown, and users can view and edit their information.
+
 # Important Data
 
 * Login for applicants
