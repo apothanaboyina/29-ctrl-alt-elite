@@ -7,7 +7,6 @@
 * Aditya Pothanaboyina: apothanaboyina
 * Amanda Katt: akatt1221
 
-# Overview
 # Innovative Idea
 
 We would like to create a web application similar to that of the UMass Student Job Board. The current web page for the Student Job Board allows for viewers to gain information about the jobs being posted and apply using the email listed in the job descriptions. We believe that the UI of the application could be improved, as well as authenticating viewers so that students can use their umass information to login and apply directly through the application. This will allow for students to apply for more jobs efficiently without having to individually emailing the employers. As a result, students will be able to increase their chances in gaining employment without having to spend a lot of time on applications.
@@ -47,7 +46,6 @@ Our user interface has 3 main components. Firstly, the search bar will be availa
 
 # API Endpoints:
 * /login: logs user profiles in
-@@ -29,29 +51,9 @@ We would like to create a web application similar to that of the UMass Student J
 * /user/:email/apply/:jobID : Specified user applies to specified job. Adds jobID to list of applied jobs for user, adds email to list of applicants for specific jobs
 * /user/delete/:email : deletes specified user
 * /job/delete/:jobId: deletes specified job
