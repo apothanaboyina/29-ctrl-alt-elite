@@ -30,6 +30,9 @@ Job Document
 # Division of Labor
 
 * Amanda:
+    creating MongoDB databases including the UserDatabase and the JobDatabase
+    updating the server to make JobBoardServer class
+    updating javascript in static folder to match updated server
 
 * Aditya:
     Deployed
